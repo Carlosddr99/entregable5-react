@@ -1,0 +1,22 @@
+
+
+    .cajaProducto{
+        border : 2px solid black;
+        display: flex;
+        flex-direction: column;
+        width:150px;
+        margin-bottom: 5px;
+        padding: 10px;
+    }
+
+    .cajaBoton{
+        margin: 10px;
+        width:fit-content;
+    }
+
+    .seccion{
+        color: blue;
+    }
+    .carrito{
+        margin-left:50px;
+    }
