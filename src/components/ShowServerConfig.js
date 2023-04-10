@@ -11,11 +11,15 @@ export function ShowServerConfig(){
 
 ShowServerConfig.propTypes = {
     config : PropTypes.shape({
-        minConnections: PropTypes.number,
-        maxConnections: PropTypes.number,
-        restartAlways: PropTypes.bool,
+        minConnections: PropTypes.number.isRequired,
+        maxConnections: PropTypes.number.isRequired,
+        restartAlways: PropTypes.bool.isRequired,
     }),
-    environment :PropTypes.oneOf(['dev','play','live']),
+    environment :PropTypes.oneOf(['dev','play','live']).isRequired,
 
-    SSL: PropTypes.any.isRequired,
+    SSL: (props, propName,componentName) => {
+        if(props.environment === "live"){
+            return PropTypes.any.isRequired;
+        }
+    }
 }

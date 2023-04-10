@@ -1,23 +1,27 @@
 import { useState } from "react"
 
-
-export function Contador(){
+export default function Contador(){
 
     const[numero, setNumero] = useState(0);
-    const[error, setError] = useState(false);
 
+    
     function setValue(valor){
-        setNumero(valor);
-        if(numero >= 3){
-            setError(true);
-            throw new Error('Hemos llegado a 3');
-        }
+        try{
+            if(numero >= 3){
+                throw new Error("Hemos llegado a 3");
+            }
+            else{
+            setNumero(valor);
+            }
+        }catch(error){
+            console.log(error);
+        }    
     }
 
     return(
         <div>
             <button onClick={()=> setValue(numero-1)}>-</button>
-            <span>{error? error: numero}</span>
+            <span>{numero}</span>
             <button onClick={()=> setValue(numero+1)}>+</button>
         </div>
     )
